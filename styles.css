@@ -12,10 +12,10 @@
 :root{
     --bg-color: #081b29;
     --text-color: #333;
-    --main-color: #00abf0;
+    --main-color: #080707;
     --second-text-color: #fff;
     --white-color: #fff;
-    --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+    --cover-color: linear-gradient(45deg, #075b7d, #040505);
     --pages-color: linear-gradient(90deg, #fff, #ddd)
     --border: .125rem solid var(--main-color);
     --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
@@ -39,6 +39,8 @@ body{
 
 .cover{
     position: absolute;
+    top: 0;
+    left: 0;
     width: 50%;
     height: 100%;
     background: var(--cover-color);
@@ -67,7 +69,255 @@ body{
     position: absolute;
     width: 50%;
     height: 100%;
-    background: var(--pages-color);
+    background: var(--white-color);
     box-shadow: 0 0 .6rem rgba(0, 0, 0, .1);
     display: flex;
+    padding: 2rem;
+}
+
+.profile-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-page img{
+    max-width: 150px;
+    border: .25rem solid var(--main-color);
+    border-radius: 20% 100% 100% 30%;
+    margin-bottom: .8rem;
+}
+
+.profile-page h1{
+    font-size: 2.7rem;
+    line-height: 1;
+}
+
+.profile-page h3{
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+.profile-page .social-media{
+    margin: .6rem 0 .8rem;
+}
+
+.profile-page .social-media a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: .125rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    margin: 0 .2rem;
+    transition: .5s;
+}
+
+.profile-page .social-media a:hover{
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.profile-page p{
+    text-align: justify;
+}
+
+.profile-page .btn-box{
+    margin-top: 1.2rem;
+}
+
+.btn{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: var(--main-color);
+    border: .125rem solid var(--main-color);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500px;
+    margin: 0 1rem;
+    transition: .5s;
+}
+
+.btn:hover{
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2){
+    background: transparent;
+    color: var(--main-color)
+}
+
+.btn-box .btn:nth-child(2):hover{
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.book-page.page-right{
+    position: absolute;
+    right: 0;
+    transform-style: preserve-3d;
+}
+
+.book-page.page-right.turn{
+    transform: rotateY(-180deg);
+    transform-origin: left;
+}
+
+.book-page .page-front,
+.book-page .page-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--pages-color);
+    padding: 1.5rem 2rem;
+}
+
+.book-page .page-front{
+    transform: rotateY(0deg) translateZ(1px);
+}
+
+.book-page .page-back{
+    transform: rotateY(180deg) translateZ(1px);
+}
+
+.title{
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.workeduc-box{
+    border-left: .125rem solid var(--main-color);
+}
+
+.workeduc-box .workeduc-content{
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.workeduc-box .workeduc-content::before{
+    content: '';
+    position: absolute;
+    top: .15rem;
+    left: -0.65rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+}
+
+.workeduc-content .year{
+    font-weight: 100;
+    color: var(--main-color);
+}
+
+.workeduc-content .year img{
+    margin-right: .1rem
+}
+
+.number-page{
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nextprev-btn img{
+    position: absolute;
+    bottom: .9rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--second-text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.nextprev-btn img:hover{
+    color: var(--main-color);
+}
+
+.nextprev-btn.back img{
+    left: 1.5rem;
+}
+
+.services-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.services-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.services-content{
+    flex: 1 1 10rem;
+    border: .125rem solid var(--main-color);
+    border-radius: .5rem;
+    padding: .8rem .5rem 1.1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    transition: .3s ease;
+}
+
+.services-box .services-content:hover{
+    box-shadow: var(--box-shadow);
+}
+
+.services-content img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    color: var(--main-color);
+}
+
+.services-content h3{
+    display: flex;
+    margin: .5rem auto;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.services-content p{
+    display: flex;
+    text-align: center;
+    font-size: .9rem;
+    margin: .1rem 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-content .btn{
+    display: flex;
+    margin: .5rem auto;
+    width: 6rem;
+    height: 2rem;
+    font-size: .9rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
