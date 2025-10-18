@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="cover cover-left"></div>
@@ -17,31 +19,169 @@
 
         <div class="book">
             <!-- profile page -->
-             <div class="book-page page-left">
+            <div class="book-page page-left">
                 <div class="profile-page">
-                    <img src="assets/Ikigai_Main_Pic.jp" alt="">
-                    <h1>Kelvin O. Ifeanyi</h1>
+                    <img src="assets/Ikigai_PP_rem_final.png" alt="">
+                    <h1>Kelvin Ifeanyi</h1>
                     <h3>Full-Stack Software Engineer</h3>
 
                     <div class="social-media">
-                        <a href="#"><i class='bxl  bx-github'  ></i></a>
-                        <a href="#"><i class='bxl  bx-twitter-x'  ></i></a>
-                        <a href="#"><i class='bxl  bx-linkedin'  ></i></a>
+                        <a href="#">
+                            <i class='bxl  bx-github'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bxl  bx-twitter-x'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bxl  bx-linkedin'></i>
+                        </a>
                     </div>
 
-                    <p>Hello there! I am Kelvin Ifeanyi, a Full-Stack Software Engineer. 
-                        Me, Computers and Solving Problems...with them! 
-                        Building scalable apps with Java, Spring Boot, React, MongoDB & Python
+                    <p>A Full-Stack Software Engineer building scalable apps with
+                        Java, Python, JavaScript, TypeScript, React, Node.js, MySQL, MongoDB and more tools I need for
+                        any particular problem solving.
                     </p>
 
                     <div class="btn-box">
-                        <a href="#" class="btn">Download My Resume</a>
+                        <a href="#" class="btn">Download CV</a>
                         <a href="#" class="btn contact-me">Contact Me</a>
                     </div>
                 </div>
-             </div>
+            </div>
+
+            <!-- page 1 & 2 -->
+            <div class="book-page page-right turn" id="turn-1">
+                <!-- page 1 (Work Experience) -->
+                <div class="page-front">
+                    <h1 class="title">Work Experience</h1>
+
+                    <div class="workeduc-box">
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2025 - Present
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2021 - Sept 2023
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                June 2018 - Dec 2020
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+                    </div>
+
+                    <span class="number-page">1</span>
+
+                    <!-- next page button -->
+                    <span class="nextprev-btn" data-page="turn-1">
+                        <img src="assets/chevrons-right.png" alt="">
+                    </span>
+                </div>
+
+                <!-- page 2 (Education) -->
+                <div class="page-back">
+                    <h1 class="title">Education</h1>
+
+                    <div class="workeduc-box">
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2025 - Present
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2021 - Sept 2023
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                June 2018 - Dec 2020
+                            </h4>
+                            <h3>Software Engineer - Company</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>
+                        </div>
+                    </div>
+
+                    <span class="number-page">2</span>
+
+                    <!-- prev page button -->
+                    <span class="nextprev-btn back" data-page="turn-1">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
+
+                </div>
+            </div>
+
+            <!-- page 3 & 4 -->
+            <div class="book-page page-right " id="turn-2">
+                <!-- page 3 (My Services) -->
+                <div class="page-front">
+                    <h1 class="title">My Services</h1>
+                    
+                    <div class="services-box">
+                        <div class="services-content">
+                            <img src="assets/rocket.png" alt="">
+                            <h3>MVP Development</h3>
+                            <p>I design and deliver production-ready MVPs, handling frontend, backend, databases and cloud hosting.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+
+                        <div class="services-content">
+                            <img src="assets/link.png" alt="">
+                            <h3>API Architecture</h3>
+                            <p>I architect and build scalable RESTful APIs with microservices and a test sriven approach.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+
+                        <div class="services-content">
+                            <img src="assets/cloud.png" alt="">
+                            <h3>Cloud Deployment</h3>
+                            <p>I build, containerize and deploy full stack web apps with CI/CD pipelines for scalability.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+
+                        <div class="services-content">
+                            <img src="assets/bolt.png" alt="">
+                            <h3>UX Optimization</h3>
+                            <p>I optimize web apps for performance, accessibility and SEO for quicker load times and optimum user experience.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- page 4 (My Skills) -->
+                <div class="page-back">
+                    <h1 class="title">My Skills</h1>
+                </div>
+
         </div>
     </div>
-    
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
