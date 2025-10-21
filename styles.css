@@ -16,7 +16,7 @@
     --second-text-color: #fff;
     --white-color: #fff;
     --cover-color: linear-gradient(45deg, #075b7d, #040505);
-    --pages-color: linear-gradient(90deg, #fff, #ddd)
+    --pages-color: linear-gradient(90deg, #fff, #ddd);
     --border: .125rem solid var(--main-color);
     --box-shadow: 0 0 .6rem rgba(0, 0, 0, .5);
 }
@@ -35,6 +35,7 @@ body{
     width: 66rem;
     height: 45rem;
     padding: 2rem;
+    perspective: 2000px;
 }
 
 .cover{
@@ -63,6 +64,7 @@ body{
     width: 100%;
     height: 100%;
     display: flex;
+    transform-style: preserve-3d;
 }
 
 .book .book-page{
@@ -110,7 +112,7 @@ body{
     width: 2.5rem;
     height: 2.5rem;
     background: transparent;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: 50%;
     font-size: 1.3rem;
     color: var(--main-color);
@@ -138,7 +140,7 @@ body{
     width: 9.5rem;
     height: 3rem;
     background: var(--main-color);
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: .3rem;
     font-size: 1rem;
     color: var(--white-color);
@@ -166,11 +168,26 @@ body{
     position: absolute;
     right: 0;
     transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.book-page.page-left{
+    position: absolute;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.book-page.page-left.turn{
+    transform: rotateY(180deg);
+    transform-origin: right;
+    transition: transform 1s ease;
 }
 
 .book-page.page-right.turn{
     transform: rotateY(-180deg);
     transform-origin: left;
+    transition: transform 1s ease;
 }
 
 .book-page .page-front,
@@ -199,7 +216,7 @@ body{
 }
 
 .workeduc-box{
-    border-left: .125rem solid var(--main-color);
+    border-left: var(--border);
 }
 
 .workeduc-box .workeduc-content{
@@ -267,7 +284,7 @@ body{
 
 .services-content{
     flex: 1 1 10rem;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: .5rem;
     padding: .6rem .5rem 1.1rem;
     text-align: center;
@@ -346,7 +363,7 @@ body{
     align-items: center;
     width: 5rem;
     height: 2.7rem;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: .3rem;
     font-weight: 500;
     font-size: .8rem;
@@ -369,7 +386,7 @@ body{
     height: 18rem;
     overflow: hidden;
     border-radius: .4rem;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     margin-bottom: .5rem;
 }
 
@@ -432,7 +449,7 @@ body{
 .contact-box .field{
     width: 100%;
     background: transparent;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: .3rem;
     padding: .8rem;
     font-size: 1rem;
@@ -460,7 +477,7 @@ body{
     width: 2rem;
     height: 2rem;
     background: transparent;
-    border: .125rem solid var(--main-color);
+    border: var(--border);
     border-radius: .3rem;
     font-size: 1.1rem;
     color: var(--main-color);
@@ -503,3 +520,16 @@ body{
 .back-profile img:hover{
     filter: invert(1);
 }
+
+/* .book-page.page-right.turn,
+.book-page.page-left.turn {
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+.book-page.page-right,
+.book-page.page-left {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.book-page .page-front,
+.book-page .page-back {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+} */
