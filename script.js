@@ -20,3 +20,15 @@ pageTurnBtn.forEach((el, index) => {
         }
     };
 });
+// ✅ Always start from first page on refresh
+window.addEventListener("load", () => {
+  const turnedPages = document.querySelectorAll(".book-page.turn, .page-left.turn");
+  turnedPages.forEach(page => page.classList.remove("turn"));
+
+  const allPages = document.querySelectorAll(".book-page");
+  allPages.forEach((page, index) => {
+    page.style.zIndex = 20 - index;
+  });
+
+  window.scrollTo(0, 0); // optional: reset scroll position
+});
