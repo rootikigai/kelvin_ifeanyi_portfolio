@@ -1,4 +1,4 @@
-// ============ PAGE TURNING FUNCTIONALITY ============
+// logic to flip my pages
 const pageTurnBtn = document.querySelectorAll('.nextprev-btn');
 
 pageTurnBtn.forEach((el, index) => {
@@ -7,13 +7,13 @@ pageTurnBtn.forEach((el, index) => {
         const pageTurn = document.getElementById(pageTurnId);
 
         if (pageTurn.classList.contains('turn')) {
-            // Turn page back
+            // Turn page backwards
             pageTurn.classList.remove('turn');
             setTimeout(() => {
                 pageTurn.style.zIndex = 20 - index;
             }, 500);
         } else {
-            // Turn page forward
+            // Turn page forwards
             pageTurn.classList.add('turn');
             setTimeout(() => {
                 pageTurn.style.zIndex = 20 + index;
@@ -23,16 +23,16 @@ pageTurnBtn.forEach((el, index) => {
 });
 
 
-// ============ ALWAYS START FROM FIRST PAGE ON REFRESH ============
+// So, on refresh, we always start from the first page
 window.addEventListener("load", () => {
   const book = document.querySelector(".book");
 
-  // Hide book immediately to prevent flicker
+  // page flicker, this prevents it
   book.style.visibility = "hidden";
   book.style.opacity = "0";
   book.style.transition = "opacity 0.6s ease";
 
-  // Reset all pages to their initial state after DOM paints
+  // Reset all pages to their initial state after DOM manipulates
   setTimeout(() => {
     const turnedPages = document.querySelectorAll(".book-page.turn, .page-left.turn");
     turnedPages.forEach(page => page.classList.remove("turn"));
@@ -42,17 +42,17 @@ window.addEventListener("load", () => {
       page.style.zIndex = 20 - index;
     });
 
-    // Prevent scroll glitch
+    // I prevent scroll glitch
     window.scrollTo(0, 0);
 
-    // Reveal book smoothly
+    // then reveal book smoothly
     book.style.visibility = "visible";
     book.style.opacity = "1";
   }, 150);
 });
 
 
-// ============ CONTACT ME BUTTON ============
+// logic for contact me button
 const contactBtn = document.querySelector(".contact-me");
 
 contactBtn.addEventListener("click", (e) => {
@@ -60,7 +60,7 @@ contactBtn.addEventListener("click", (e) => {
 
   const rightPages = document.querySelectorAll(".book-page.page-right");
 
-  // Flip all right-hand pages forward
+  // Flip all pages forward automatically to get to contact page
   rightPages.forEach((page, i) => {
     setTimeout(() => {
       page.classList.add("turn");
@@ -70,7 +70,7 @@ contactBtn.addEventListener("click", (e) => {
 });
 
 
-// ============ BACK TO PROFILE BUTTON ============
+// logic for back to profile button
 const backToProfileBtn = document.querySelector(".back-profile");
 
 backToProfileBtn.addEventListener("click", (e) => {
@@ -80,10 +80,10 @@ backToProfileBtn.addEventListener("click", (e) => {
   const allPages = Array.from(document.querySelectorAll(".book-page"));
   const rightPages = Array.from(document.querySelectorAll(".book-page.page-right")).reverse();
 
-  // Step 1: Temporarily disable clicks during animation
+  // Temporarily disable clicks during animation
   backToProfileBtn.style.pointerEvents = "none";
 
-  // Step 2: Flip all right pages backward with proper timing
+  // Flip all right pages backward to get to profile page
   rightPages.forEach((page, i) => {
     setTimeout(() => {
       page.classList.remove("turn");
@@ -91,7 +91,7 @@ backToProfileBtn.addEventListener("click", (e) => {
     }, i * 500);
   });
 
-  // Step 3: After all flips, normalize z-index for all pages in DOM order
+  // After all flips, normalize z-index for all pages in DOM order
   setTimeout(() => {
     allPages.forEach((page, index) => {
       page.style.zIndex = 20 - index;
@@ -101,4 +101,74 @@ backToProfileBtn.addEventListener("click", (e) => {
     backToProfileBtn.style.pointerEvents = "auto";
   }, rightPages.length * 500 + 600);
 });
+
+
+// Scaling logic to fit layout for width/height on small screens
+function applyFitToWidth() {
+  const wrapper = document.querySelector('.wrapper');
+  if (!wrapper) return;
+
+  // Reset any inline scaling/transform so natural measurements are used
+  wrapper.style.transform = '';
+
+  const viewportW = window.innerWidth;
+  const viewportH = window.innerHeight;
+
+  // When in portrait on small screens I rotate layout 90deg in CSS.
+  // Effective layout size (after rotation) should use swapped viewport dimensions.
+  const isPortraitMobile = window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+
+  const layoutWidth = isPortraitMobile ? viewportH : viewportW;
+  const layoutHeight = isPortraitMobile ? viewportW : viewportH;
+
+  // The CSS default wrapper size for desktop is 66rem x 45rem (rem depends on root font-size)
+  // We'll read computed size to determine intrinsic layout size.
+  const computed = window.getComputedStyle(wrapper);
+  // Parse computed width/height in px
+  const intrinsicW = parseFloat(computed.width);
+  const intrinsicH = parseFloat(computed.height);
+
+  // Compute scale to fit width and height without overflow
+  const scaleX = layoutWidth / intrinsicW;
+  const scaleY = layoutHeight / intrinsicH;
+  const scale = Math.min(scaleX, scaleY, 1); // never upscale beyond 1
+
+  // Apply transform: if rotated via CSS for portrait, include rotate(90deg)
+  if (isPortraitMobile) {
+    wrapper.style.transform = `translate(-50%, -50%) rotate(90deg) scale(${scale})`;
+    wrapper.style.top = '50%';
+    wrapper.style.left = '50%';
+    wrapper.style.position = 'absolute';
+    wrapper.style.transformOrigin = 'center center';
+  } else {
+    // Reset transform for non-rotated view, but apply scale centered
+    wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    wrapper.style.top = '50%';
+    wrapper.style.left = '50%';
+    wrapper.style.position = 'absolute';
+    wrapper.style.transformOrigin = 'center center';
+  }
+
+  // Prevent body scroll that could reveal cutoffs
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+}
+
+// Run on load and resize with debounce
+let fitTimeout;
+function runFitDebounced() {
+  clearTimeout(fitTimeout);
+  fitTimeout = setTimeout(applyFitToWidth, 120);
+}
+
+window.addEventListener('load', () => {
+  // ensure previous load handler logic runs first (keeps page reset behavior)
+  setTimeout(() => {
+    applyFitToWidth();
+  }, 220);
+});
+
+window.addEventListener('resize', runFitDebounced);
+window.matchMedia('(max-width: 900px) and (orientation: portrait)').addEventListener('change', runFitDebounced);
+
 
