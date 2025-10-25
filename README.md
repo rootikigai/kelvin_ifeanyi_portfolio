@@ -37,8 +37,4 @@ Open `index.html` in your browser or serve the project with a static server (rec
 - /assets — images and icons
 
 ## License
-<<<<<<< HEAD
 MIT — feel free to reuse and modify. Be wise enough to add your personal touch...no just do copy copy!
-=======
-MIT — feel free to reuse and modify. Be wise enough to add your personal touch...no just do copy copy!
->>>>>>> 25251ab476c0f676c7fcd3882dcb32973a2aea94
