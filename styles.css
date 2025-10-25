@@ -169,6 +169,8 @@ body{
     right: 0;
     transform-style: preserve-3d;
     transition: transform 1s ease;
+    transform-origin: left;
+    z-index: 2;
 }
 
 .book-page.page-left{
@@ -176,18 +178,16 @@ body{
     left: 0;
     transform-style: preserve-3d;
     transition: transform 1s ease;
+    transform-origin: right;
+    z-index: 1;
 }
 
 .book-page.page-left.turn{
     transform: rotateY(180deg);
-    transform-origin: right;
-    transition: transform 1s ease;
 }
 
 .book-page.page-right.turn{
     transform: rotateY(-180deg);
-    transform-origin: left;
-    transition: transform 1s ease;
 }
 
 .book-page .page-front,
@@ -521,15 +521,17 @@ body{
     filter: invert(1);
 }
 
-/* .book-page.page-right.turn,
+.book-page.page-right.turn,
 .book-page.page-left.turn {
     box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
 }
+
 .book-page.page-right,
 .book-page.page-left {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
 .book-page .page-front,
 .book-page .page-back {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-} */
+}
