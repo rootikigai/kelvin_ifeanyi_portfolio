@@ -536,3 +536,70 @@ body{
 .book-page .page-back {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Always present as horizontal (landscape) on mobile portrait devices
+   - rotate the wrapper 90deg so users holding phone portrait see a horizontal layout
+   - swap width/height using viewport units so the book perfectly fits without vertical scroll
+   - keep transform-style/perspective so 3D page flips remain intact */
+@media (max-width: 1200px) and (orientation: portrait) {
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* prevent vertical scrolling */
+  }
+
+  .wrapper{
+    /* use viewport height as the horizontal width so the rotated layout fills the screen */
+    position: absolute;
+    width: 100vh;
+    height: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) scale(0.985);
+    transform-origin: center center;
+    perspective: 1200px; /* keep good 3D depth */
+    padding: .4rem;
+  }
+
+  .book{
+    visibility: visible; /* ensure book is visible after JS reset */
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  /* keep same left/right page layout but make them fully fit vertically after rotation */
+  .book .book-page{
+    width: 50%;
+    height: 100%;
+    padding: .5rem;
+  }
+
+  /* small size adjustments to ensure no overflow */
+  .profile-page img{ max-width: 100px; }
+  .profile-page h1{ font-size: 1.4rem; }
+  .profile-page h3{ font-size: .95rem; }
+  .profile-page p{ font-size: .9rem; }
+  .btn{ width: 6.6rem; height: 2.2rem; font-size: .85rem; }
+  .nextprev-btn img{ width: 1.5rem; height: 1.5rem; bottom: .5rem; }
+
+  .portfolio-box .img-box{ height: 11.5rem; }
+  .contact-box textarea{ height: 9rem; }
+  .skills-content .content span{ width: 4.4rem; height: 2.3rem; font-size: .72rem; }
+}
+
+/* Landscape small screens: scale to fit while preserving 3D effects */
+@media (max-width: 900px) and (orientation: landscape) {
+  .wrapper{
+    width: calc(100vw - 1rem);
+    height: calc(70vh);
+    padding: .6rem;
+    perspective: 1200px;
+  }
+
+  .book{ transform: scale(0.95); }
+  .book .book-page{ height: 100%; }
+}
