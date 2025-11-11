@@ -23,11 +23,11 @@ pageTurnBtn.forEach((el, index) => {
 });
 
 
-// So, on refresh, we always start from the first page
+// So, on refresh, I always start from the first page
 window.addEventListener("load", () => {
   const book = document.querySelector(".book");
 
-  // page flicker, this prevents it
+  // that nonsense page flicker, this tries to prevent it. Not perfect yet
   book.style.visibility = "hidden";
   book.style.opacity = "0";
   book.style.transition = "opacity 0.6s ease";
@@ -83,7 +83,7 @@ backToProfileBtn.addEventListener("click", (e) => {
   // Temporarily disable clicks during animation
   backToProfileBtn.style.pointerEvents = "none";
 
-  // Flip all right pages backward to get to profile page
+  // Flip all pages backward to get to profile page
   rightPages.forEach((page, i) => {
     setTimeout(() => {
       page.classList.remove("turn");
