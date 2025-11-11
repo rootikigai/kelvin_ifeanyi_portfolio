@@ -226,6 +226,14 @@ body{
     margin-bottom: 1.2rem;
 }
 
+.workeduc-box .workeduc-content h3{
+    font-size:medium;
+}
+
+.workeduc-box .workeduc-content p{
+    font-size: small;
+}
+
 .workeduc-box .workeduc-content::before{
     content: '';
     position: absolute;
