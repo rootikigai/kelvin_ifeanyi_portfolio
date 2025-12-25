@@ -418,11 +418,28 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .portfolio-box .info-box .info-title h3{
     font-size: 1.1rem;
+}
+
+.portfolio-box .info-box .project-desc p{
+    font-size: 1rem;
+}
+
+.portfolio-box .info-box .project-desc ul{
+    font-size: 0.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.portfolio-box .info-box .project-stack p{
+    font-size: 1rem;
+}
+
+.portfolio-box .info-box .project-stack ul{
+    font-size: 0.8rem;
 }
 
 .portfolio-box .info-box .info-title a{
@@ -446,9 +463,9 @@ body{
 
 .portfolio-box .btn-box .btn{
     margin: 0 1.15;
-    width: 7.5rem;
-    height: 2.5rem;
-    font-size: .9rem;
+    width: 6.5rem;
+    height: 2rem;
+    font-size: .8rem;
 }
 
 .contact-box{
@@ -509,7 +526,7 @@ body{
     font-size: .9rem;
     color: var(--main-color);
     opacity: 0;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .back-profile:hover p{
